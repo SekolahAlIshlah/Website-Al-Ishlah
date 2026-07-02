@@ -1,0 +1,86 @@
+<!-- Floating Radio Murottal Widget -->
+<div x-data="{
+       isPlaying: false,
+       volume: 0.8,
+       streamUrl: '{{ settings.radioUrl }}',
+       init() {
+         this.$watch('volume', value => {
+           this.$refs.audioPlayer.volume = value;
+         });
+       },
+       togglePlay() {
+         const audio = this.$refs.audioPlayer;
+         if (this.isPlaying) {
+           audio.pause();
+           // Clear source on pause to stop network stream download
+           audio.removeAttribute('src');
+           audio.load();
+           this.isPlaying = false;
+         } else {
+           // Reload source on play to grab the live feed
+           audio.setAttribute('src', this.streamUrl);
+           audio.load();
+           audio.play().then(() => {
+             this.isPlaying = true;
+           }).catch(err => {
+             console.error('Playback failed:', err);
+             this.isPlaying = false;
+           });
+         }
+       }
+     }"
+     class="fixed bottom-6 right-6 z-40 bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 flex items-center space-x-4 max-w-sm w-80 hover-lift transition-all duration-300">
+
+  <!-- Audio Element -->
+  <audio x-ref="audioPlayer" preload="none"></audio>
+
+  <!-- Play/Pause Button -->
+  <button @click="togglePlay()" 
+          class="w-12 h-12 bg-primary hover:bg-primary-light text-white flex items-center justify-center rounded-full shadow-md transition-colors shrink-0 focus:outline-none">
+    <!-- Play Icon -->
+    <svg x-show="!isPlaying" class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <!-- Pause Icon -->
+    <svg x-show="isPlaying" class="w-5 h-5 fill-current" viewBox="0 0 24 24" style="display: none;">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </button>
+
+  <!-- Info Area -->
+  <div class="flex-grow min-w-0">
+    <div class="flex items-center space-x-2">
+      <span class="block text-sm font-bold text-navy truncate">Radio Al-Ishlah</span>
+      <span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-red-600 uppercase tracking-wider">
+        <span class="w-1.5 h-1.5 mr-1 bg-red-600 rounded-full" :class="isPlaying ? 'animate-pulse' : ''"></span>
+        Live
+      </span>
+    </div>
+    <span class="block text-xs text-gray-500 truncate mt-0.5">Murottal Al-Qur'an 24 Jam</span>
+  </div>
+
+  <!-- Volume Control -->
+  <div class="flex items-center space-x-2 shrink-0" x-data="{ showVolume: false }" @mouseenter="showVolume = true" @mouseleave="showVolume = false">
+    <!-- Volume Icon -->
+    <button @click="volume = volume > 0 ? 0 : 0.8" class="text-navy hover:text-primary transition-colors focus:outline-none">
+      <svg x-show="volume > 0.5" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+      </svg>
+      <svg x-show="volume <= 0.5 && volume > 0" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+      </svg>
+      <svg x-show="volume == 0" class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+      </svg>
+    </button>
+    
+    <!-- Volume Slider (Slide in-out transition) -->
+    <input type="range" 
+           min="0" 
+           max="1" 
+           step="0.05" 
+           x-model="volume"
+           class="w-16 h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" />
+  </div>
+
+</div>

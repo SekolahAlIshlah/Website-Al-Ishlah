@@ -1,0 +1,111 @@
+<footer class="bg-primary text-white border-t border-primary-dark pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      
+      <!-- Brand column -->
+      <div class="space-y-6">
+        <a href="/" class="flex items-center space-x-3">
+          <div class="w-12 h-12 bg-white text-primary flex items-center justify-center rounded-xl">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xl font-bold tracking-tight leading-none text-white">AL-ISHLAH</span>
+            <span class="block text-xs font-semibold text-cream/75 tracking-wider uppercase mt-1">TKQ - TPQ - DTA</span>
+          </div>
+        </a>
+        <p class="text-sm text-cream/80 max-w-xs leading-relaxed">
+          {{ settings.description }}
+        </p>
+        
+        <!-- Social Icons -->
+        <div class="flex space-x-4">
+          <a href="{{ settings.socials.facebook }}" target="_blank" rel="noopener" class="w-9 h-9 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center rounded-full transition-colors">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+          </a>
+          <a href="{{ settings.socials.instagram }}" target="_blank" rel="noopener" class="w-9 h-9 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center rounded-full transition-colors">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="{{ settings.socials.youtube }}" target="_blank" rel="noopener" class="w-9 h-9 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center rounded-full transition-colors">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.507 9.388.507 9.388.507s7.518 0 9.388-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h3 class="text-lg font-bold text-white mb-6">Menu</h3>
+        <ul class="grid grid-cols-2 gap-3 text-sm">
+          <li><a href="/" class="text-cream/80 hover:text-white transition-colors">Beranda</a></li>
+          <li><a href="/tentang/" class="text-cream/80 hover:text-white transition-colors">Tentang Kami</a></li>
+          <li><a href="/program/tkq/" class="text-cream/80 hover:text-white transition-colors">TKQ</a></li>
+          <li><a href="/program/tpq/" class="text-cream/80 hover:text-white transition-colors">TPQ</a></li>
+          <li><a href="/program/dta/" class="text-cream/80 hover:text-white transition-colors">DTA</a></li>
+          <li><a href="/guru/" class="text-cream/80 hover:text-white transition-colors">Guru</a></li>
+          <li><a href="/berita/" class="text-cream/80 hover:text-white transition-colors">Berita</a></li>
+          <li><a href="/galeri/" class="text-cream/80 hover:text-white transition-colors">Galeri</a></li>
+          <li><a href="/ppdb/" class="text-cream/80 hover:text-white transition-colors">PPDB</a></li>
+          <li><a href="/faq/" class="text-cream/80 hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="/kontak/" class="text-cream/80 hover:text-white transition-colors">Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-white mb-6">Kontak Kami</h3>
+        <ul class="space-y-4 text-sm text-cream/85">
+          <li class="flex items-start space-x-3">
+            <svg class="w-5 h-5 shrink-0 text-yellow mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span>{{ settings.contact.address }}</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <svg class="w-5 h-5 shrink-0 text-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            <span>{{ settings.contact.phone }}</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <svg class="w-5 h-5 shrink-0 text-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <span>{{ settings.contact.email }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Operational hours -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-white mb-6">Jam Operasional</h3>
+        <ul class="space-y-3 text-sm text-cream/85">
+          <li class="flex items-center space-x-3">
+            <svg class="w-5 h-5 shrink-0 text-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>{{ settings.contact.operationalHoursWeekday }}</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <svg class="w-5 h-5 shrink-0 text-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>{{ settings.contact.operationalHoursWeekend }}</span>
+          </li>
+          <li class="flex items-center space-x-3 opacity-60">
+            <svg class="w-5 h-5 shrink-0 text-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>Minggu: Tutup</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    
+    <div class="border-t border-white/10 pt-8 text-center text-xs text-cream/60">
+      <p>&copy; {{ "" | dateDisplay }} {{ settings.schoolName }}. Hak Cipta Dilindungi Undang-Undang.</p>
+    </div>
+  </div>
+</footer>

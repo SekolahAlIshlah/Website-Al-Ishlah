@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-cream text-navy;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-navy font-bold;
+  }
+}
+
+/* Custom component and utility styles matching the reference image aesthetics */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-full font-semibold transition-all hover:bg-primary-light duration-300;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-white text-navy border border-gray-200 rounded-full font-semibold transition-all hover:bg-gray-50 duration-300;
+}
+
+/* Custom animations and effects */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* PJAX Transition Effects */
+#main-content {
+  transition: opacity 0.15s ease-in-out;
+}
+.pjax-loading #main-content {
+  opacity: 0;
+}

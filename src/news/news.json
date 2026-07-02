@@ -1,0 +1,5 @@
+{
+  "tags": "news",
+  "layout": "layouts/page.njk",
+  "permalink": "/berita/{{ title | slugify }}/"
+}

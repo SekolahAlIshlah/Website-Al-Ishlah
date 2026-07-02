@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ settings.schoolName }}</title>
+  <meta name="description" content="{{ description or settings.description }}">
+  
+  <!-- SEO & Open Graph -->
+  <meta property="og:title" content="{{ title }} | {{ settings.schoolName }}">
+  <meta property="og:description" content="{{ description or settings.description }}">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-cream text-navy flex flex-col min-h-screen">
+
+  <!-- Announcement Banner -->
+  {% for item in collections.announcements | reverse %}
+    {% if item.data.active and loop.first %}
+    <div x-data="{ show: true }" x-show="show" class="bg-yellow text-navy px-4 py-2 text-center text-xs font-bold relative z-50 flex items-center justify-center space-x-2">
+      <span>{{ item.content | safe }}</span>
+      <a href="/ppdb/" class="underline hover:text-primary transition-colors ml-2">Daftar Sekarang &rarr;</a>
+      <button @click="show = false" class="absolute right-4 text-navy hover:text-red-500 focus:outline-none text-base font-normal">&times;</button>
+    </div>
+    {% endif %}
+  {% endfor %}
+
+  <!-- Navbar (Persistent outside PJAX main-content) -->
+  {% include "components/navbar.njk" %}
+
+  <!-- Main Content Wrapper (PJAX updates only the contents of this tag) -->
+  <div id="main-content" class="flex-grow pjax-fade">
+    {{ content | safe }}
+  </div>
+
+  <!-- Footer (Persistent outside PJAX main-content) -->
+  {% include "components/footer.njk" %}
+
+  <!-- Floating Audio Player / Radio Murottal (Persistent outside PJAX main-content) -->
+  {% include "components/radio.njk" %}
+
+  <!-- Floating WhatsApp CTA (Persistent outside PJAX main-content) -->
+  {% include "components/whatsapp.njk" %}
+
+  <!-- Core Page Route Handling PJAX Script -->
+  <script src="/assets/js/main.js"></script>
+  
+</body>
+</html>

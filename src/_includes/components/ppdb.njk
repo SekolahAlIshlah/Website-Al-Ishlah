@@ -1,0 +1,58 @@
+<section class="py-16 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-[#FFF8E6] border border-[#FFE29A] rounded-[32px] p-8 md:p-12 lg:p-16 relative overflow-hidden shadow-sm flex flex-col lg:flex-row items-center justify-between">
+      
+      <!-- Left decorative shapes and student mockup offset -->
+      <div class="absolute -left-12 -bottom-12 w-64 h-64 bg-yellow/20 rounded-full blur-2xl"></div>
+      
+      <!-- Content column -->
+      <div class="lg:max-w-2xl space-y-6 relative z-10 text-center lg:text-left">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-navy">
+            Pendaftaran PPDB {{ settings.ppdbYear }}
+          </h2>
+          <span class="block text-2xl font-extrabold text-red-500 mt-2 tracking-wide uppercase">
+            TELAH DIBUKA!
+          </span>
+        </div>
+        <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+          Bergabunglah bersama kami di Sekolah Al-Ishlah untuk membina putra-putri tercinta menjadi generasi yang mandiri, Qur'ani, berakhlak mulia, dan berprestasi unggul.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
+          <!-- Button -->
+          <a href="/ppdb/" class="inline-flex items-center space-x-2 px-7 py-3.5 bg-primary hover:bg-primary-light text-white rounded-full font-semibold transition-all duration-300 shadow-md hover-lift">
+            <span>Daftar Sekarang</span>
+            <span class="w-6 h-6 bg-white text-primary flex items-center justify-center rounded-full">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+          </a>
+          <span class="text-xs font-bold text-gray-500 tracking-wider uppercase">Kuota Terbatas!</span>
+        </div>
+      </div>
+
+      <!-- Right column: Graphic illustration of a school building -->
+      <div class="mt-10 lg:mt-0 relative z-10 shrink-0 w-full max-w-[280px] sm:max-w-[320px] flex justify-center">
+        <!-- SVG School illustration -->
+        <svg class="w-64 h-64 text-primary" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="85" fill="#0D683E" fill-opacity="0.05" />
+          <path d="M40 140H160V150H40V140Z" fill="#1A1A3A" />
+          <!-- Pillars -->
+          <rect x="50" y="80" width="10" height="60" fill="#0D683E" />
+          <rect x="140" y="80" width="10" height="60" fill="#0D683E" />
+          <rect x="95" y="70" width="10" height="70" fill="#FFD166" />
+          <!-- Roof -->
+          <path d="M30 80L100 30L170 80H30Z" fill="#0D683E" />
+          <!-- Small crescent dome -->
+          <path d="M100 15V25" stroke="#FFD166" stroke-width="3" stroke-linecap="round" />
+          <path d="M100 15C102.761 15 105 17.2386 105 20C105 22.7614 102.761 25 100 25C97.2386 25 95 22.7614 95 20" stroke="#FFD166" stroke-width="2" stroke-linecap="round" />
+          <!-- Door -->
+          <path d="M85 140V110C85 101.716 91.7157 95 100 95C108.284 95 115 101.716 115 110V140H85Z" fill="#1A1A3A" />
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>

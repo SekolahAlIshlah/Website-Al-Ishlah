@@ -1,0 +1,119 @@
+<header x-data="{ mobileMenuOpen: false, programDropdownOpen: false }" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center space-x-3 shrink-0">
+        <!-- SVG Mosque Logo matching Al-Ishlah -->
+        <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-xl">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="block text-lg font-bold text-navy tracking-tight leading-none">AL-ISHLAH</span>
+          <span class="block text-xs font-semibold text-gray-500 tracking-wider uppercase mt-1">TKQ - TPQ - DTA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="hidden lg:flex items-center space-x-8">
+        <a href="/" class="nav-link text-sm font-medium transition-colors duration-200">Beranda</a>
+        <a href="/tentang/" class="nav-link text-sm font-medium transition-colors duration-200">Tentang Kami</a>
+        
+        <!-- Program Dropdown -->
+        <div class="relative" @mouseenter="programDropdownOpen = true" @mouseleave="programDropdownOpen = false">
+          <button class="nav-link text-sm font-medium transition-colors duration-200 flex items-center space-x-1 focus:outline-none">
+            <span>Program</span>
+            <svg class="w-4 h-4 transition-transform duration-200" :class="programDropdownOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div x-show="programDropdownOpen"
+               x-transition:enter="transition ease-out duration-100"
+               x-transition:enter-start="opacity-0 scale-95"
+               x-transition:enter-end="opacity-100 scale-100"
+               x-transition:leave="transition ease-in duration-75"
+               x-transition:leave-start="opacity-100 scale-100"
+               x-transition:leave-end="opacity-0 scale-95"
+               class="absolute left-0 mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-xl py-2 z-50"
+               style="display: none;">
+            <a href="/program/tkq/" class="block px-4 py-2 text-sm text-navy hover:bg-cream hover:text-primary transition-colors">TKQ (Kanak-Kanak)</a>
+            <a href="/program/tpq/" class="block px-4 py-2 text-sm text-navy hover:bg-cream hover:text-primary transition-colors">TPQ (Pendidikan Al-Qur'an)</a>
+            <a href="/program/dta/" class="block px-4 py-2 text-sm text-navy hover:bg-cream hover:text-primary transition-colors">DTA (Diniyah Takmiliyah)</a>
+          </div>
+        </div>
+
+        <a href="/guru/" class="nav-link text-sm font-medium transition-colors duration-200">Guru</a>
+        <a href="/berita/" class="nav-link text-sm font-medium transition-colors duration-200">Berita</a>
+        <a href="/galeri/" class="nav-link text-sm font-medium transition-colors duration-200">Galeri</a>
+        <a href="/faq/" class="nav-link text-sm font-medium transition-colors duration-200">FAQ</a>
+        <a href="/kontak/" class="nav-link text-sm font-medium transition-colors duration-200">Kontak</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden lg:flex items-center">
+        <a href="/ppdb/" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary hover:bg-primary-light text-white rounded-full text-sm font-semibold transition-all duration-300 shadow-md shadow-primary/20">
+          <span>PPDB Online</span>
+          <span class="w-6 h-6 bg-white text-primary flex items-center justify-center rounded-full">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Hamburger Button (Mobile) -->
+      <div class="flex items-center lg:hidden">
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-navy hover:text-primary focus:outline-none">
+          <svg class="w-6 h-6" x-show="!mobileMenuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg class="w-6 h-6" x-show="mobileMenuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div x-show="mobileMenuOpen" 
+       x-transition:enter="transition ease-out duration-200"
+       x-transition:enter-start="opacity-0 -translate-y-4"
+       x-transition:enter-end="opacity-100 translate-y-0"
+       x-transition:leave="transition ease-in duration-150"
+       x-transition:leave-start="opacity-100 translate-y-0"
+       x-transition:leave-end="opacity-0 -translate-y-4"
+       class="lg:hidden bg-white border-b border-gray-100 py-4 px-4 space-y-3"
+       style="display: none;">
+    <a href="/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Beranda</a>
+    <a href="/tentang/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Tentang Kami</a>
+    
+    <div class="px-3 py-2 rounded-xl border border-gray-50 bg-gray-50/50">
+      <span class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Program</span>
+      <div class="grid grid-cols-1 gap-2 pl-2">
+        <a href="/program/tkq/" @click="mobileMenuOpen = false" class="text-sm font-medium text-navy-light hover:text-primary">TKQ (Kanak-Kanak)</a>
+        <a href="/program/tpq/" @click="mobileMenuOpen = false" class="text-sm font-medium text-navy-light hover:text-primary">TPQ (Al-Qur'an)</a>
+        <a href="/program/dta/" @click="mobileMenuOpen = false" class="text-sm font-medium text-navy-light hover:text-primary">DTA (Diniyah)</a>
+      </div>
+    </div>
+
+    <a href="/guru/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Guru</a>
+    <a href="/berita/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Berita</a>
+    <a href="/galeri/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Galeri</a>
+    <a href="/faq/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">FAQ</a>
+    <a href="/kontak/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Kontak</a>
+    
+    <a href="/ppdb/" @click="mobileMenuOpen = false" class="flex items-center justify-between px-5 py-3 bg-primary text-white rounded-xl text-base font-semibold transition-all">
+      <span>PPDB Online</span>
+      <span class="w-6 h-6 bg-white text-primary flex items-center justify-center rounded-full">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </span>
+    </a>
+  </div>
+</header>

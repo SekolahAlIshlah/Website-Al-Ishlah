@@ -1,0 +1,23 @@
+{
+  "schoolName": "Sekolah Al-Ishlah",
+  "levels": "TKQ - TPQ - DTA",
+  "tagline": "Membentuk Generasi Qur'ani, Berakhlak & Berprestasi",
+  "description": "Sekolah Al-Ishlah hadir untuk mendampingi putra-putri Anda dalam belajar Al-Qur'an, ilmu agama, dan ilmu dunia dengan lingkungan yang islami, aman, dan menyenangkan.",
+  "radioUrl": "https://radio.mp3islam.com:8030/radio.mp3",
+  "whatsappNumber": "6281234567890",
+  "whatsappText": "Assalamu'alaikum, saya ingin bertanya tentang pendaftaran PPDB di Al-Ishlah.",
+  "ppdbYear": "2025/2026",
+  "ppdbOpen": true,
+  "contact": {
+    "address": "Jl. Contoh No. 122, Kota Anda",
+    "phone": "+62 812 3456 7890",
+    "email": "info@alishlah.sch.id",
+    "operationalHoursWeekday": "Senin - Jumat: 07.30 - 16.00",
+    "operationalHoursWeekend": "Sabtu: 07.30 - 12.00"
+  },
+  "socials": {
+    "facebook": "https://facebook.com/alishlah",
+    "instagram": "https://instagram.com/alishlah",
+    "youtube": "https://youtube.com/alishlah"
+  }
+}

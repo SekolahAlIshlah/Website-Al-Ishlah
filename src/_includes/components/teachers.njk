@@ -1,0 +1,134 @@
+<section class="py-20 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Heading -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div class="text-left">
+        <span class="block text-sm font-bold text-primary tracking-widest uppercase mb-2">Guru Kami</span>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-navy">
+          Guru & Ustadz Profesional
+        </h2>
+      </div>
+      
+      <!-- Carousel Nav Buttons -->
+      <div class="flex space-x-3 mt-4 md:mt-0" x-data>
+        <button @click="$dispatch('prev-teacher')" class="w-12 h-12 rounded-full border border-gray-200 text-navy hover:bg-primary hover:text-white flex items-center justify-center transition-colors duration-300 focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button @click="$dispatch('next-teacher')" class="w-12 h-12 rounded-full border border-gray-200 text-navy hover:bg-primary hover:text-white flex items-center justify-center transition-colors duration-300 focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Carousel Body -->
+    <div x-data="{
+           activeCard: 0,
+           cardsCount: 5,
+           scroll() {
+             const slider = this.$refs.slider;
+             const cardWidth = slider.firstElementChild.getBoundingClientRect().width + 24; // width + gap
+             slider.scrollTo({
+               left: this.activeCard * cardWidth,
+               behavior: 'smooth'
+             });
+           }
+         }"
+         @next-teacher.window="activeCard = (activeCard + 1) % cardsCount; scroll()"
+         @prev-teacher.window="activeCard = activeCard === 0 ? cardsCount - 1 : activeCard - 1; scroll()"
+         class="relative">
+      
+      <!-- Slider Track -->
+      <div x-ref="slider" class="flex overflow-x-auto gap-6 scrollbar-hide pb-6 snap-x snap-mandatory" style="-ms-overflow-style: none; scrollbar-width: none;">
+        
+        <!-- Teacher 1 -->
+        <div class="snap-start shrink-0 w-72 bg-cream/35 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
+          <!-- Blob background -->
+          <div class="w-40 h-40 bg-primary/10 rounded-full mx-auto mb-6 flex items-end justify-center overflow-hidden relative">
+            <div class="absolute bottom-0 w-28 h-28 bg-primary rounded-t-full scale-90 opacity-20"></div>
+            <!-- Avatar SVG -->
+            <svg class="w-24 h-24 text-primary relative z-10 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy">Ust. Ahmed Fauzi</h3>
+          <span class="block text-xs font-semibold text-primary mt-1">Kepala Sekolah</span>
+        </div>
+
+        <!-- Teacher 2 -->
+        <div class="snap-start shrink-0 w-72 bg-cream/35 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
+          <!-- Blob background -->
+          <div class="w-40 h-40 bg-pink/10 rounded-full mx-auto mb-6 flex items-end justify-center overflow-hidden relative">
+            <div class="absolute bottom-0 w-28 h-28 bg-pink rounded-t-full scale-90 opacity-20"></div>
+            <!-- Avatar SVG -->
+            <svg class="w-24 h-24 text-pink relative z-10 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy">Ustdz. Siti Aisyah</h3>
+          <span class="block text-xs font-semibold text-pink mt-1">Guru Tahfidz</span>
+        </div>
+
+        <!-- Teacher 3 -->
+        <div class="snap-start shrink-0 w-72 bg-cream/35 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
+          <!-- Blob background -->
+          <div class="w-40 h-40 bg-yellow/15 rounded-full mx-auto mb-6 flex items-end justify-center overflow-hidden relative">
+            <div class="absolute bottom-0 w-28 h-28 bg-yellow rounded-t-full scale-90 opacity-20"></div>
+            <!-- Avatar SVG -->
+            <svg class="w-24 h-24 text-yellow relative z-10 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy">Ust. M. Hafidz</h3>
+          <span class="block text-xs font-semibold text-yellow-600 mt-1">Guru Tajwid</span>
+        </div>
+
+        <!-- Teacher 4 -->
+        <div class="snap-start shrink-0 w-72 bg-cream/35 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
+          <!-- Blob background -->
+          <div class="w-40 h-40 bg-blue/10 rounded-full mx-auto mb-6 flex items-end justify-center overflow-hidden relative">
+            <div class="absolute bottom-0 w-28 h-28 bg-blue rounded-t-full scale-90 opacity-20"></div>
+            <!-- Avatar SVG -->
+            <svg class="w-24 h-24 text-blue relative z-10 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy">Ustdz. Nurul Hidayah</h3>
+          <span class="block text-xs font-semibold text-blue mt-1">Guru Akhlak</span>
+        </div>
+
+        <!-- Teacher 5 -->
+        <div class="snap-start shrink-0 w-72 bg-cream/35 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
+          <!-- Blob background -->
+          <div class="w-40 h-40 bg-primary/10 rounded-full mx-auto mb-6 flex items-end justify-center overflow-hidden relative">
+            <div class="absolute bottom-0 w-28 h-28 bg-primary rounded-t-full scale-90 opacity-20"></div>
+            <!-- Avatar SVG -->
+            <svg class="w-24 h-24 text-primary relative z-10 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy">Ust. Reza Maulana</h3>
+          <span class="block text-xs font-semibold text-primary mt-1">Guru Fiqih</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom link -->
+    <div class="text-center mt-12">
+      <a href="/guru/" class="inline-flex items-center space-x-2 text-primary font-bold text-sm hover:text-primary-light transition-colors group">
+        <span>Lihat Semua Guru</span>
+        <span class="w-8 h-8 bg-primary/10 text-primary flex items-center justify-center rounded-full transition-transform group-hover:translate-x-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>

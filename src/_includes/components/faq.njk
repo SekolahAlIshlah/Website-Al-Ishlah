@@ -1,0 +1,71 @@
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Heading -->
+    <div class="text-left max-w-3xl mb-16">
+      <span class="block text-sm font-bold text-primary tracking-widest uppercase mb-2">Pertanyaan Umum</span>
+      <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-navy">
+        Pertanyaan yang Sering Diajukan
+      </h2>
+    </div>
+
+    <!-- Main Layout Split -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start" x-data="{ activeFaq: null }">
+      
+      <!-- Left Column: Accordions (7/12) -->
+      <div class="lg:col-span-7 space-y-4">
+        {% for item in collections.faq | sortOrder %}
+        <div class="border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 bg-cream/20">
+          <button @click="activeFaq = activeFaq === {{ loop.index }} ? null : {{ loop.index }}" 
+                  class="w-full flex items-center justify-between p-5 text-left font-bold text-navy hover:text-primary transition-colors focus:outline-none">
+            <span>{{ item.data.question }}</span>
+            <span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 ml-4 font-normal">
+              <span x-text="activeFaq === {{ loop.index }} ? '−' : '+'" class="text-lg leading-none"></span>
+            </span>
+          </button>
+          <div x-show="activeFaq === {{ loop.index }}" 
+               x-transition:enter="transition ease-out duration-200"
+               x-transition:enter-start="opacity-0 max-h-0"
+               x-transition:enter-end="opacity-100 max-h-40"
+               class="px-5 pb-5 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-3"
+               style="display: none;">
+            {{ item.content | safe }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Right Column: Card with generated character image (5/12) -->
+      <div class="lg:col-span-5 bg-cream border border-gray-100 rounded-3xl p-8 flex flex-col items-center justify-between text-center relative overflow-hidden shadow-md">
+        <!-- Colored blob background -->
+        <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-primary/5 rounded-full"></div>
+        
+        <div class="space-y-4 relative z-10">
+          <h3 class="text-xl font-display font-extrabold text-navy">Masih ada pertanyaan?</h3>
+          <p class="text-sm text-gray-500 max-w-xs mx-auto">
+            Jangan ragu untuk berkonsultasi. Tim admin kami siap menyambut pertanyaan Anda seputar program Al-Ishlah.
+          </p>
+        </div>
+
+        <!-- Generated Character Image -->
+        <div class="w-48 h-48 my-6 flex items-center justify-center relative">
+          <div class="absolute inset-0 bg-primary/5 rounded-full scale-90"></div>
+          <img src="/assets/images/faq-character.png" alt="Tanya Al-Ishlah" class="relative z-10 w-full h-full object-contain drop-shadow-md">
+        </div>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/{{ settings.whatsappNumber }}?text={{ settings.whatsappText | urlencode }}" 
+           target="_blank" 
+           rel="noopener" 
+           class="inline-flex items-center space-x-2 px-6 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full text-sm font-semibold shadow-md hover-lift transition-all duration-300 relative z-10"
+           data-no-pjax>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.864.001-2.641-1.024-5.123-2.887-6.988C16.58 1.888 14.1 .86 11.457.86 6.023.86 1.598 5.272 1.595 10.724c-.001 1.743.462 3.447 1.343 4.957l-.993 3.626 3.712-.973zm11.714-7.462c-.302-.15-1.785-.88-2.062-.98-.277-.1-.478-.15-.679.15-.201.3-.778.98-.954 1.18-.176.2-.352.225-.654.075-.302-.15-1.276-.47-2.43-1.499-.899-.8-1.505-1.789-1.681-2.088-.176-.3-.018-.462.132-.61.135-.133.302-.35.452-.525.151-.175.201-.3.302-.5.101-.2.05-.375-.025-.525-.075-.15-.679-1.636-.93-2.247-.244-.589-.493-.508-.679-.517-.176-.009-.377-.01-.578-.01-.201 0-.528.075-.804.375-.276.3-1.055 1.03-1.055 2.512s1.08 2.916 1.23 3.116c.15.2 2.128 3.25 5.156 4.56.72.311 1.28.497 1.718.637.722.23 1.38.197 1.901.12.58-.087 1.785-.73 2.037-1.435.252-.705.252-1.31.176-1.435-.076-.125-.277-.2-.579-.35z"/>
+          </svg>
+          <span>Hubungi Kami</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
