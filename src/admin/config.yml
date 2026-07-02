@@ -1,0 +1,111 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: settings
+    label: Global Settings
+    delete: false
+    files:
+      - name: general
+        label: General Settings
+        file: src/_data/settings.json
+        fields:
+          - { label: "School Name", name: "schoolName", widget: "string" }
+          - { label: "Education Levels", name: "levels", widget: "string" }
+          - { label: "Hero Tagline", name: "tagline", widget: "string" }
+          - { label: "Hero Description", name: "description", widget: "text" }
+          - { label: "Radio Stream URL", name: "radioUrl", widget: "string" }
+          - { label: "WhatsApp Contact (Format: 62...)", name: "whatsappNumber", widget: "string" }
+          - { label: "WhatsApp Message Text", name: "whatsappText", widget: "text" }
+          - { label: "PPDB Year", name: "ppdbYear", widget: "string" }
+          - { label: "PPDB Open Status", name: "ppdbOpen", widget: "boolean" }
+          - label: "Contact Details"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Operational Hours (Weekday)", name: "operationalHoursWeekday", widget: "string" }
+              - { label: "Operational Hours (Weekend)", name: "operationalHoursWeekend", widget: "string" }
+          - label: "Social Media Links"
+            name: "socials"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string" }
+              - { label: "Instagram", name: "instagram", widget: "string" }
+              - { label: "YouTube", name: "youtube", widget: "string" }
+
+  - name: programs
+    label: Educational Programs
+    folder: src/program
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Program Name (e.g. TKQ)", name: "title", widget: "string" }
+      - { label: "Full Program Name", name: "fullName", widget: "string" }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Age Range", name: "ageRange", widget: "string" }
+      - { label: "Color Theme", name: "color", widget: "select", options: ["green", "pink", "blue"] }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Detail Curriculum", name: "body", widget: "markdown" }
+
+  - name: news
+    label: News & Blog
+    folder: src/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Body Content", name: "body", widget: "markdown" }
+
+  - name: teachers
+    label: Teachers & Staffs
+    folder: src/teachers
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Full Name", name: "title", widget: "string" }
+      - { label: "Role / Position", name: "role", widget: "string" }
+      - { label: "Subject Taught", name: "subject", widget: "string" }
+      - { label: "Photo URL / Image", name: "photo", widget: "image" }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
+
+  - name: gallery
+    label: Gallery Activities
+    folder: src/gallery
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Event Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Gallery Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "string" }
+
+  - name: faq
+    label: FAQ Entries
+    folder: src/faq
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "text" }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
+
+  - name: announcements
+    label: Announcements
+    folder: src/announcements
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Announcement Title", name: "title", widget: "string" }
+      - { label: "Content Text", name: "content", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Active Status", name: "active", widget: "boolean" }
