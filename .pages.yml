@@ -2,7 +2,7 @@ media:
   input: src/assets/images
   output: /assets/images
 
-collections:
+content:
   - name: settings
     label: Global Settings
     type: file
@@ -29,7 +29,7 @@ collections:
 
   - name: programs
     label: Educational Programs
-    type: folder
+    type: collection
     path: src/program
     format: md
     fields:
@@ -43,7 +43,7 @@ collections:
 
   - name: news
     label: News & Blog
-    type: folder
+    type: collection
     path: src/news
     format: md
     fields:
@@ -55,7 +55,7 @@ collections:
 
   - name: teachers
     label: Teachers & Staffs
-    type: folder
+    type: collection
     path: src/teachers
     format: md
     fields:
@@ -67,7 +67,7 @@ collections:
 
   - name: gallery
     label: Gallery Activities
-    type: folder
+    type: collection
     path: src/gallery
     format: md
     fields:
@@ -78,7 +78,7 @@ collections:
 
   - name: faq
     label: FAQ Entries
-    type: folder
+    type: collection
     path: src/faq
     format: md
     fields:
@@ -88,7 +88,7 @@ collections:
 
   - name: announcements
     label: Announcements
-    type: folder
+    type: collection
     path: src/announcements
     format: md
     fields:
