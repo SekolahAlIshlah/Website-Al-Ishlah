@@ -1,8 +1,10 @@
 ---
-layout: layouts/page.njk
+layout: layouts/program.njk
 title: Program DTA (Diniyah Takmiliyah Awaliyah)
 permalink: /program/dta/
 description: "Mengenal Program DTA Sekolah Al-Ishlah untuk rentang usia anak 10 hingga 15 tahun."
+image: /assets/images/program-dta.jpg
+programId: dta
 ---
 
 ## Pengantar Program DTA

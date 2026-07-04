@@ -18,8 +18,8 @@
 
         <!-- Headline -->
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display text-navy tracking-tight leading-tight lg:leading-[1.1]">
-          Membentuk Generasi Qur'ani, <br>
-          <span class="text-primary">Berakhlak & Berprestasi</span>
+          {{ settings.heroTitleFirst }} <br>
+          <span class="text-primary">{{ settings.heroTitleSecond }}</span>
         </h1>
 
         <!-- Subheading Description -->
@@ -47,52 +47,99 @@
           </a>
         </div>
 
-        <!-- 4 Highlights badgess -->
+        <!-- Highlights badges -->
         <div class="pt-6 border-t border-gray-100 flex flex-wrap gap-4">
+          {% for highlight in settings.heroHighlights %}
           <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-50 shadow-sm text-xs font-medium text-navy">
-            <span class="w-2.5 h-2.5 bg-yellow rounded-full"></span>
-            <span>Lingkungan Islami</span>
+            <span class="w-2.5 h-2.5 rounded-full {% if loop.index0 % 4 == 0 %}bg-yellow{% elif loop.index0 % 4 == 1 %}bg-primary{% elif loop.index0 % 4 == 2 %}bg-pink{% else %}bg-blue{% endif %}"></span>
+            <span>{{ highlight }}</span>
           </div>
-          <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-50 shadow-sm text-xs font-medium text-navy">
-            <span class="w-2.5 h-2.5 bg-primary rounded-full"></span>
-            <span>Pembelajaran Berkualitas</span>
-          </div>
-          <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-50 shadow-sm text-xs font-medium text-navy">
-            <span class="w-2.5 h-2.5 bg-pink rounded-full"></span>
-            <span>Guru Profesional</span>
-          </div>
-          <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-50 shadow-sm text-xs font-medium text-navy">
-            <span class="w-2.5 h-2.5 bg-blue rounded-full"></span>
-            <span>Fasilitas Nyaman</span>
-          </div>
+          {% endfor %}
         </div>
       </div>
 
-      <!-- Right Column: Visual Mockup matching the reference -->
-      <div class="lg:col-span-5 relative flex justify-center lg:justify-end mt-10 lg:mt-0">
-        <!-- Colored Circle Backgrounds behind the student image -->
-        <div class="relative w-80 h-80 sm:w-96 sm:h-96">
-          <div class="absolute inset-0 bg-pink rounded-full scale-[0.85] translate-x-4 -translate-y-4 opacity-10"></div>
-          <div class="absolute inset-0 bg-primary rounded-full scale-[0.85] -translate-x-4 translate-y-4 opacity-5"></div>
+      <!-- Right Column: Visual Slideshow Gallery -->
+      <div class="lg:col-span-5 mt-10 lg:mt-0 flex justify-center lg:justify-end">
+        <div x-data="{
+               activeSlide: 0,
+               slidesCount: {{ collections.gallery.length or 5 }},
+               prev() {
+                 this.activeSlide = this.activeSlide === 0 ? this.slidesCount - 1 : this.activeSlide - 1;
+               },
+               next() {
+                 this.activeSlide = (this.activeSlide + 1) % this.slidesCount;
+               }
+             }" 
+             class="relative w-full max-w-[380px] aspect-[4/5] bg-white border-4 border-white shadow-2xl rounded-3xl overflow-hidden group">
           
-          <!-- Cute background colorful blobs -->
-          <div class="absolute -top-4 -right-4 w-20 h-20 bg-yellow rounded-full opacity-30 blur-xl"></div>
-          <div class="absolute -bottom-8 -left-8 w-24 h-24 bg-blue rounded-full opacity-20 blur-xl"></div>
+          <!-- Slides container -->
+          <div class="w-full h-full relative">
+            {% for item in collections.gallery | limit(5) %}
+            <div x-show="activeSlide === {{ loop.index0 }}" 
+                 x-transition:enter="transition ease-out duration-350"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 class="absolute inset-0"
+                 style="{% if not loop.first %}display: none;{% endif %}">
+              
+              <!-- Slide Image & Overlay -->
+              <div class="w-full h-full bg-primary/5 flex flex-col items-center justify-center relative">
+                <!-- Radial pattern fallback -->
+                <div class="absolute inset-0 bg-primary/10 opacity-20 bg-[radial-gradient(#0D683E_1.5px,transparent_1.5px)] [background-size:16px_16px]"></div>
+                
+                <!-- Fallback Icon if image missing -->
+                <svg class="w-16 h-16 text-primary/45 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                
+                {% if item.data.image %}
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="w-full h-full object-cover relative z-10">
+                {% endif %}
 
-          <!-- Main Students Photo -->
-          <img src="/assets/images/hero-students.png" alt="Siswa Al-Ishlah" class="relative z-10 w-full h-full object-contain drop-shadow-xl">
-          
-          <!-- Floating badge: PPDB Announcement -->
-          <div class="absolute -right-4 top-1/3 z-20 bg-white border-2 border-[#E1F3EA] rounded-2xl p-4 shadow-xl max-w-[180px] hover-lift transition-all duration-300">
-            <span class="block text-[10px] font-bold text-primary uppercase tracking-wider">Pendaftaran</span>
-            <span class="block text-sm font-extrabold text-navy mt-1">PPDB {{ settings.ppdbYear }}</span>
-            <span class="block text-[11px] font-bold text-red-500 mt-1 uppercase tracking-wide">TELAH DIBUKA!</span>
+                <!-- Slide Info overlay at the bottom -->
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-navy/90 via-navy/55 to-transparent p-6 pt-16 text-white text-left z-20">
+                  <span class="inline-block px-2.5 py-0.5 bg-primary text-[10px] font-bold rounded-full uppercase tracking-wider mb-2">
+                    {{ item.data.category }}
+                  </span>
+                  <h4 class="text-lg font-bold font-display leading-tight">{{ item.data.title }}</h4>
+                </div>
+              </div>
+              
+            </div>
+            {% endfor %}
           </div>
-          
-          <!-- Small decorative stars/dots -->
-          <div class="absolute top-6 left-6 w-4 h-4 bg-yellow rounded-full animate-bounce"></div>
-          <div class="absolute bottom-16 right-4 w-3 h-3 bg-pink rounded-full"></div>
-          <div class="absolute top-1/2 -left-6 w-5 h-5 bg-blue rounded-full animate-pulse"></div>
+
+          <!-- Controls: Prev Button -->
+          <button @click="prev()" 
+                  class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm text-navy rounded-full shadow-md flex items-center justify-center hover:bg-white transition-all opacity-0 group-hover:opacity-100 focus:outline-none z-30">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+
+          <!-- Controls: Next Button -->
+          <button @click="next()" 
+                  class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm text-navy rounded-full shadow-md flex items-center justify-center hover:bg-white transition-all opacity-0 group-hover:opacity-100 focus:outline-none z-30">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+
+          <!-- Indicators -->
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-1.5 z-30">
+            {% for item in collections.gallery | limit(5) %}
+            <button @click="activeSlide = {{ loop.index0 }}" 
+                    class="w-2.5 h-2.5 rounded-full transition-all"
+                    :class="activeSlide === {{ loop.index0 }} ? 'bg-primary w-4' : 'bg-white/50'"></button>
+            {% endfor %}
+          </div>
+
+          <!-- PPDB overlay badge -->
+          <div class="absolute left-4 top-4 z-30 bg-white border border-[#E1F3EA] rounded-2xl px-3.5 py-2 shadow-lg">
+            <span class="block text-[8px] font-bold text-primary uppercase tracking-wider leading-none">Pendaftaran</span>
+            <span class="block text-xs font-black text-navy mt-1 leading-none">PPDB {{ settings.ppdbYear }}</span>
+          </div>
+
         </div>
       </div>
 

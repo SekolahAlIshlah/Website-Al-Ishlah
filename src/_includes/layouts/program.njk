@@ -1,0 +1,86 @@
+---
+layout: layouts/base.njk
+---
+
+<!-- Page Header Banner -->
+<section class="bg-primary text-white py-16 relative overflow-hidden">
+  <!-- Decorative background circle -->
+  <div class="absolute right-0 top-0 w-80 h-80 bg-white/5 rounded-full translate-x-20 -translate-y-20"></div>
+  <div class="absolute left-10 bottom-0 w-40 h-40 bg-white/5 rounded-full -translate-x-10 translate-y-10"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold tracking-tight text-white !text-white">
+      {{ title }}
+    </h1>
+    <!-- Breadcrumbs -->
+    <nav class="flex justify-center mt-4 text-xs font-semibold text-cream/70 space-x-2 tracking-wide uppercase">
+      <a href="/" class="text-cream hover:text-white transition-colors">Beranda</a>
+      <span class="text-cream/50">/</span>
+      <span class="text-white !text-white font-bold">{{ title }}</span>
+    </nav>
+  </div>
+</section>
+
+<!-- Page Content Container -->
+<section class="py-16 bg-cream/15">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
+    <article class="prose prose-navy max-w-none text-gray-600 leading-relaxed space-y-6">
+      {% if image %}
+      <div class="aspect-video w-full rounded-3xl overflow-hidden mb-8 relative bg-primary/5 flex items-center justify-center border border-gray-100 shadow-sm">
+        <div class="absolute inset-0 bg-primary/10 opacity-20 bg-[radial-gradient(#0D683E_1.5px,transparent_1.5px)] [background-size:18px_18px]"></div>
+        <img src="{{ image }}" alt="{{ title }}" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+        <svg class="w-16 h-16 text-primary/30 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+      </div>
+      {% endif %}
+      
+      {{ content | safe }}
+    </article>
+  </div>
+</section>
+
+<!-- Program Specific Teachers Section -->
+<section class="py-16 bg-white overflow-hidden border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="block text-sm font-bold text-primary tracking-widest uppercase mb-2">Staf Pengajar</span>
+      <h2 class="text-3xl font-display font-extrabold text-navy">Guru Pengajar {{ title }}</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+      {% for teacher in collections.teachers | sortOrder %}
+        {% if teacher.data.program and (programId in teacher.data.program or teacher.data.program == programId) %}
+          <div class="bg-cream/15 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
+            <div class="w-36 h-36 bg-primary/10 rounded-full mx-auto mb-6 flex items-end justify-center overflow-hidden relative">
+              <div class="absolute bottom-0 w-24 h-24 bg-primary rounded-t-full scale-90 opacity-20"></div>
+              {% if teacher.data.photo and teacher.data.photo != '/assets/images/teachers/avatar-green.svg' %}
+                <img src="{{ teacher.data.photo }}" alt="{{ teacher.data.title }}" class="w-full h-full object-cover relative z-10">
+              {% else %}
+                <svg class="w-20 h-20 text-primary relative z-10 translate-y-1.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              {% endif %}
+            </div>
+            
+            <h3 class="text-lg font-bold text-navy m-0">{{ teacher.data.title }}</h3>
+            <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase tracking-wider mt-2">
+              {{ teacher.data.role }}
+            </span>
+            
+            <div class="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-400">
+              <span class="block font-semibold uppercase tracking-wide text-gray-400">Mata Pelajaran:</span>
+              <span class="block text-gray-500 font-medium mt-1">{{ teacher.data.subject }}</span>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PPDB CTA Section -->
+{% include "components/ppdb.njk" %}
+
+<!-- News Section (Kabar Terbaru) -->
+{% include "components/news.njk" %}

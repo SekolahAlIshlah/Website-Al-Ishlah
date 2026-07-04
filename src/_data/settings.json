@@ -19,5 +19,54 @@
     "facebook": "https://facebook.com/alishlah",
     "instagram": "https://instagram.com/alishlah",
     "youtube": "https://youtube.com/alishlah"
+  },
+  "heroTitleFirst": "Membentuk Generasi Qur'ani,",
+  "heroTitleSecond": "Berakhlak & Berprestasi",
+  "heroHighlights": [
+    "Lingkungan Islami",
+    "Pembelajaran Berkualitas",
+    "Guru Profesional",
+    "Fasilitas Nyaman"
+  ],
+  "stats": [
+    {
+      "value": "350+",
+      "label": "Siswa Aktif",
+      "color": "green",
+      "icon": "students"
+    },
+    {
+      "value": "25+",
+      "label": "Guru & Ustadz",
+      "color": "pink",
+      "icon": "teachers"
+    },
+    {
+      "value": "Akreditasi A",
+      "label": "Sertifikasi Resmi",
+      "color": "yellow",
+      "icon": "accreditation"
+    }
+  ],
+  "profile": {
+    "subtitle": "Profil Sekolah",
+    "heading": "Sekolah Al-Ishlah: <br>Membina Karakter Islami Sejak Dini",
+    "description1": "Sekolah Al-Ishlah hadir sebagai partner tepercaya bagi orang tua dalam mendidik putra-putri tercinta agar mengenal, mencintai, dan mengamalkan nilai-nilai luhur Al-Qur'an serta tuntunan akhlak mulia Nabi Muhammad SAW.",
+    "description2": "Melalui sinergi tiga program pendidikan unggulan (TKQ, TPQ, dan DTA), kami mendidik santri secara menyeluruh melalui pembiasaan adab harian, kajian fiqih praktis, hafalan Juz 30, serta pembentukan pribadi yang disiplin dan santun.",
+    "points": [
+      {
+        "title": "Fokus Adab & Akhlak",
+        "description": "Menanamkan kesopanan santri terhadap orang tua dan sesama."
+      },
+      {
+        "title": "Hafalan Juz 30",
+        "description": "Target hafalan bertahap dan terukur di setiap jenjang pendidikan."
+      }
+    ]
+  },
+  "faqSection": {
+    "title": "Masih ada pertanyaan?",
+    "description": "Jangan ragu untuk berkonsultasi. Tim admin kami siap menyambut pertanyaan Anda seputar program Al-Ishlah.",
+    "image": "/assets/images/faq-character.png"
   }
 }

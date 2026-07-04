@@ -1,29 +1,29 @@
-<header x-data="{ mobileMenuOpen: false, programDropdownOpen: false }" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+<header x-data="{ mobileMenuOpen: false, programDropdownOpen: false }" class="sticky top-0 z-50 bg-primary text-white shadow-md">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       
       <!-- Brand Logo -->
       <a href="/" class="flex items-center space-x-3 shrink-0">
-        <!-- SVG Mosque Logo matching Al-Ishlah -->
-        <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-xl">
+        <!-- SVG Mosque Logo with white background -->
+        <div class="w-10 h-10 bg-white text-primary flex items-center justify-center rounded-xl shadow-sm">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
           </svg>
         </div>
         <div>
-          <span class="block text-lg font-bold text-navy tracking-tight leading-none">AL-ISHLAH</span>
-          <span class="block text-xs font-semibold text-gray-500 tracking-wider uppercase mt-1">TKQ - TPQ - DTA</span>
+          <span class="block text-lg font-bold text-white tracking-tight leading-none">AL-ISHLAH</span>
+          <span class="block text-xs font-semibold text-cream/70 tracking-wider uppercase mt-1">TKQ - TPQ - DTA</span>
         </div>
       </a>
 
       <!-- Desktop Nav Menu -->
       <nav class="hidden lg:flex items-center space-x-8">
-        <a href="/" class="nav-link text-sm font-medium transition-colors duration-200">Beranda</a>
-        <a href="/tentang/" class="nav-link text-sm font-medium transition-colors duration-200">Tentang Kami</a>
+        <a href="/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200">Beranda</a>
+        <a href="/tentang/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200">Tentang Kami</a>
         
         <!-- Program Dropdown -->
         <div class="relative" @mouseenter="programDropdownOpen = true" @mouseleave="programDropdownOpen = false">
-          <button class="nav-link text-sm font-medium transition-colors duration-200 flex items-center space-x-1 focus:outline-none">
+          <button data-active-prefix="/program/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200 flex items-center space-x-1 focus:outline-none">
             <span>Program</span>
             <svg class="w-4 h-4 transition-transform duration-200" :class="programDropdownOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -45,18 +45,31 @@
           </div>
         </div>
 
-        <a href="/guru/" class="nav-link text-sm font-medium transition-colors duration-200">Guru</a>
-        <a href="/berita/" class="nav-link text-sm font-medium transition-colors duration-200">Berita</a>
-        <a href="/galeri/" class="nav-link text-sm font-medium transition-colors duration-200">Galeri</a>
-        <a href="/faq/" class="nav-link text-sm font-medium transition-colors duration-200">FAQ</a>
-        <a href="/kontak/" class="nav-link text-sm font-medium transition-colors duration-200">Kontak</a>
+        <a href="/guru/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200">Guru</a>
+        <a href="/berita/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200">Berita</a>
+        <a href="/galeri/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200">Galeri</a>
+        <a href="/faq/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200">FAQ</a>
+        <a href="/kontak/" class="nav-link text-cream/90 hover:text-white text-sm font-medium transition-colors duration-200">Kontak</a>
       </nav>
 
-      <!-- CTA Button -->
-      <div class="hidden lg:flex items-center">
-        <a href="/ppdb/" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary hover:bg-primary-light text-white rounded-full text-sm font-semibold transition-all duration-300 shadow-md shadow-primary/20">
+      <!-- CTA Buttons (Desktop) -->
+      <div class="hidden lg:flex items-center space-x-4">
+        <!-- WhatsApp CTA -->
+        <a href="https://wa.me/{{ settings.whatsappNumber }}?text={{ settings.whatsappText | urlencode }}" 
+           target="_blank" 
+           rel="noopener" 
+           class="inline-flex items-center justify-center w-10 h-10 bg-white hover:bg-cream rounded-full shadow-md transition-all duration-300 hover-lift shrink-0"
+           title="Hubungi Kami via WhatsApp"
+           data-no-pjax>
+          <svg class="w-5 h-5 fill-current text-[#25D366]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.46 3.48 1.332 5.003L2 22l5.163-1.354a9.953 9.953 0 004.837 1.254c5.51 0 9.993-4.483 9.993-9.993C21.997 6.483 17.514 2 12.004 2zm0 1.666c4.593 0 8.328 3.735 8.328 8.327 0 4.593-3.735 8.328-8.328 8.328a8.272 8.272 0 01-4.225-1.154l-.304-.18-3.136.822.836-3.056-.197-.314A8.28 8.28 0 013.676 11.99c0-4.592 3.735-8.327 8.328-8.327zm-3.61 3.518a.633.633 0 00-.457.215c-.157.172-.601.587-.601 1.432s.616 1.66.702 1.775c.086.114 1.213 1.853 2.94 2.597.41.177.732.282.982.362.413.13.79.112 1.087.068.331-.05 1.022-.418 1.165-.822.143-.404.143-.75.1-.822-.043-.072-.157-.115-.33-.201-.17-.087-1.022-.505-1.18-.563-.157-.057-.27-.086-.385.086-.114.172-.444.563-.544.678-.1.114-.2.128-.372.042-.172-.085-.726-.267-1.383-.853-.51-.456-.855-1.02-.955-1.192-.1-.172-.01-.265.076-.35.077-.077.172-.2.258-.3.086-.1.114-.172.172-.344.057-.172.028-.323-.014-.41-.043-.085-.385-.93-.529-1.272-.138-.337-.282-.292-.385-.298-.1-.005-.214-.005-.328-.005z"/>
+          </svg>
+        </a>
+
+        <!-- PPDB Online Button -->
+        <a href="/ppdb/" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-white hover:bg-cream text-primary rounded-full text-sm font-semibold transition-all duration-300 shadow-md hover-lift">
           <span>PPDB Online</span>
-          <span class="w-6 h-6 bg-white text-primary flex items-center justify-center rounded-full">
+          <span class="w-6 h-6 bg-primary text-white flex items-center justify-center rounded-full">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
@@ -66,7 +79,7 @@
 
       <!-- Hamburger Button (Mobile) -->
       <div class="flex items-center lg:hidden">
-        <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-navy hover:text-primary focus:outline-none">
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white hover:text-cream focus:outline-none">
           <svg class="w-6 h-6" x-show="!mobileMenuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -79,7 +92,7 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Menu Drawer -->
   <div x-show="mobileMenuOpen" 
        x-transition:enter="transition ease-out duration-200"
        x-transition:enter-start="opacity-0 -translate-y-4"
@@ -87,10 +100,10 @@
        x-transition:leave="transition ease-in duration-150"
        x-transition:leave-start="opacity-100 translate-y-0"
        x-transition:leave-end="opacity-0 -translate-y-4"
-       class="lg:hidden bg-white border-b border-gray-100 py-4 px-4 space-y-3"
+       class="lg:hidden bg-white border-b border-gray-150 py-4 px-4 space-y-3"
        style="display: none;">
-    <a href="/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Beranda</a>
-    <a href="/tentang/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Tentang Kami</a>
+    <a href="/" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-xl text-base font-medium text-navy hover:bg-cream hover:text-primary transition-colors">Beranda</a>
+    <a href="/tentang/" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-xl text-base font-medium text-navy hover:bg-cream hover:text-primary transition-colors">Tentang Kami</a>
     
     <div class="px-3 py-2 rounded-xl border border-gray-50 bg-gray-50/50">
       <span class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Program</span>
@@ -101,19 +114,33 @@
       </div>
     </div>
 
-    <a href="/guru/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Guru</a>
-    <a href="/berita/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Berita</a>
-    <a href="/galeri/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Galeri</a>
-    <a href="/faq/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">FAQ</a>
-    <a href="/kontak/" @click="mobileMenuOpen = false" class="nav-link block px-3 py-2 rounded-xl text-base font-medium hover:bg-cream">Kontak</a>
+    <a href="/guru/" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-xl text-base font-medium text-navy hover:bg-cream hover:text-primary transition-colors">Guru</a>
+    <a href="/berita/" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-xl text-base font-medium text-navy hover:bg-cream hover:text-primary transition-colors">Berita</a>
+    <a href="/galeri/" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-xl text-base font-medium text-navy hover:bg-cream hover:text-primary transition-colors">Galeri</a>
+    <a href="/faq/" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-xl text-base font-medium text-navy hover:bg-cream hover:text-primary transition-colors">FAQ</a>
+    <a href="/kontak/" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-xl text-base font-medium text-navy hover:bg-cream hover:text-primary transition-colors">Kontak</a>
     
-    <a href="/ppdb/" @click="mobileMenuOpen = false" class="flex items-center justify-between px-5 py-3 bg-primary text-white rounded-xl text-base font-semibold transition-all">
-      <span>PPDB Online</span>
-      <span class="w-6 h-6 bg-white text-primary flex items-center justify-center rounded-full">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+    <div class="grid grid-cols-2 gap-3 pt-2">
+      <!-- WhatsApp Mobile Button (White/Green text) -->
+      <a href="https://wa.me/{{ settings.whatsappNumber }}?text={{ settings.whatsappText | urlencode }}" 
+         target="_blank" 
+         rel="noopener" 
+         class="flex items-center justify-center space-x-2 px-4 py-3 bg-[#25D366] text-white rounded-xl text-sm font-semibold transition-all shadow-sm"
+         data-no-pjax>
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.46 3.48 1.332 5.003L2 22l5.163-1.354a9.953 9.953 0 004.837 1.254c5.51 0 9.993-4.483 9.993-9.993C21.997 6.483 17.514 2 12.004 2zm0 1.666c4.593 0 8.328 3.735 8.328 8.327 0 4.593-3.735 8.328-8.328 8.328a8.272 8.272 0 01-4.225-1.154l-.304-.18-3.136.822.836-3.056-.197-.314A8.28 8.28 0 013.676 11.99c0-4.592 3.735-8.327 8.328-8.327zm-3.61 3.518a.633.633 0 00-.457.215c-.157.172-.601.587-.601 1.432s.616 1.66.702 1.775c.086.114 1.213 1.853 2.94 2.597.41.177.732.282.982.362.413.13.79.112 1.087.068.331-.05 1.022-.418 1.165-.822.143-.404.143-.75.1-.822-.043-.072-.157-.115-.33-.201-.17-.087-1.022-.505-1.18-.563-.157-.057-.27-.086-.385.086-.114.172-.444.563-.544.678-.1.114-.2.128-.372.042-.172-.085-.726-.267-1.383-.853-.51-.456-.855-1.02-.955-1.192-.1-.172-.01-.265.076-.35.077-.077.172-.2.258-.3.086-.1.114-.172.172-.344.057-.172.028-.323-.014-.41-.043-.085-.385-.93-.529-1.272-.138-.337-.282-.292-.385-.298-.1-.005-.214-.005-.328-.005z"/>
         </svg>
-      </span>
-    </a>
+        <span>WhatsApp</span>
+      </a>
+      <!-- PPDB Mobile Button (Green) -->
+      <a href="/ppdb/" @click="mobileMenuOpen = false" class="flex items-center justify-center space-x-2 px-4 py-3 bg-primary text-white rounded-xl text-sm font-semibold transition-all">
+        <span>PPDB</span>
+        <span class="w-5 h-5 bg-white text-primary flex items-center justify-center rounded-full">
+          <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </span>
+      </a>
+    </div>
   </div>
 </header>

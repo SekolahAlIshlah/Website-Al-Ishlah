@@ -20,81 +20,31 @@
 
     <!-- Gallery Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-      
-      <!-- Gallery Item 1 -->
-      <div class="bg-white p-3 rounded-2xl shadow-md border border-gray-50 hover-lift relative group overflow-hidden">
-        <div class="aspect-square bg-primary/5 text-primary flex flex-col items-center justify-center rounded-xl overflow-hidden mb-3 relative">
-          <!-- Pattern background -->
+      {% for item in collections.gallery | limit(5) %}
+      <div class="aspect-square bg-white rounded-2xl shadow-md border border-gray-105 hover-lift relative group overflow-hidden">
+        <div class="w-full h-full bg-primary/5 flex flex-col items-center justify-center relative">
+          <!-- Radial pattern fallback -->
           <div class="absolute inset-0 bg-primary/10 opacity-20 bg-[radial-gradient(#0D683E_1px,transparent_1px)] [background-size:16px_16px]"></div>
-          <!-- SVG Icon -->
-          <svg class="w-12 h-12 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          
+          {% if item.data.image %}
+          <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10">
+          {% else %}
+          <!-- Icon fallback -->
+          <svg class="w-10 h-10 text-primary/45 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
           </svg>
-          <span class="text-[10px] font-bold text-primary uppercase mt-2 relative z-10">TKQ</span>
-        </div>
-        <span class="block text-xs font-bold text-navy truncate">Belajar Al-Qur'an</span>
-        <span class="block text-[10px] text-gray-400 mt-0.5">Kegiatan Harian</span>
-      </div>
+          <span class="text-[10px] font-bold text-primary/80 uppercase mt-12 px-2 text-center absolute">{{ item.data.title }}</span>
+          {% endif %}
 
-      <!-- Gallery Item 2 -->
-      <div class="bg-white p-3 rounded-2xl shadow-md border border-gray-50 hover-lift relative group overflow-hidden">
-        <div class="aspect-square bg-pink/5 text-pink flex flex-col items-center justify-center rounded-xl overflow-hidden mb-3 relative">
-          <!-- Pattern background -->
-          <div class="absolute inset-0 bg-pink/10 opacity-20 bg-[radial-gradient(#FF6B9D_1px,transparent_1px)] [background-size:16px_16px]"></div>
-          <!-- SVG Icon -->
-          <svg class="w-12 h-12 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-          </svg>
-          <span class="text-[10px] font-bold text-pink uppercase mt-2 relative z-10">TPQ</span>
+          <!-- Hover Overlay -->
+          <div class="absolute inset-0 bg-navy/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col justify-end p-4 text-left">
+            <span class="text-[9px] font-bold text-primary-light uppercase tracking-wider">{{ item.data.category }}</span>
+            <h4 class="text-xs font-bold text-white mt-1 leading-snug line-clamp-2">{{ item.data.title }}</h4>
+          </div>
         </div>
-        <span class="block text-xs font-bold text-navy truncate">Sholat Berjamaah</span>
-        <span class="block text-[10px] text-gray-400 mt-0.5">Pendidikan Akhlak</span>
       </div>
-
-      <!-- Gallery Item 3 -->
-      <div class="bg-white p-3 rounded-2xl shadow-md border border-gray-50 hover-lift relative group overflow-hidden">
-        <div class="aspect-square bg-yellow/10 text-yellow-600 flex flex-col items-center justify-center rounded-xl overflow-hidden mb-3 relative">
-          <!-- Pattern background -->
-          <div class="absolute inset-0 bg-yellow/10 opacity-20 bg-[radial-gradient(#FFD166_1px,transparent_1px)] [background-size:16px_16px]"></div>
-          <!-- SVG Icon -->
-          <svg class="w-12 h-12 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-          <span class="text-[10px] font-bold text-yellow-600 uppercase mt-2 relative z-10">Semua Level</span>
-        </div>
-        <span class="block text-xs font-bold text-navy truncate">Bermain Bersama</span>
-        <span class="block text-[10px] text-gray-400 mt-0.5">Fasilitas Nyaman</span>
-      </div>
-
-      <!-- Gallery Item 4 -->
-      <div class="bg-white p-3 rounded-2xl shadow-md border border-gray-50 hover-lift relative group overflow-hidden">
-        <div class="aspect-square bg-blue/5 text-blue flex flex-col items-center justify-center rounded-xl overflow-hidden mb-3 relative">
-          <!-- Pattern background -->
-          <div class="absolute inset-0 bg-blue/10 opacity-20 bg-[radial-gradient(#4A90E2_1px,transparent_1px)] [background-size:16px_16px]"></div>
-          <!-- SVG Icon -->
-          <svg class="w-12 h-12 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-          </svg>
-          <span class="text-[10px] font-bold text-blue uppercase mt-2 relative z-10">DTA</span>
-        </div>
-        <span class="block text-xs font-bold text-navy truncate">Praktek Bahasa Arab</span>
-        <span class="block text-[10px] text-gray-400 mt-0.5">Metode Praktis</span>
-      </div>
-
-      <!-- Gallery Item 5 -->
-      <div class="bg-white p-3 rounded-2xl shadow-md border border-gray-50 hover-lift relative group overflow-hidden">
-        <div class="aspect-square bg-primary/5 text-primary flex flex-col items-center justify-center rounded-xl overflow-hidden mb-3 relative">
-          <!-- Pattern background -->
-          <div class="absolute inset-0 bg-primary/10 opacity-20 bg-[radial-gradient(#0D683E_1px,transparent_1px)] [background-size:16px_16px]"></div>
-          <!-- SVG Icon -->
-          <svg class="w-12 h-12 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-          </svg>
-          <span class="text-[10px] font-bold text-primary uppercase mt-2 relative z-10">Semua Level</span>
-        </div>
-        <span class="block text-xs font-bold text-navy truncate">Pentas Seni & Wisuda</span>
-        <span class="block text-[10px] text-gray-400 mt-0.5">Momentum Bahagia</span>
-      </div>
+      {% endfor %}
+    </div>
 
     </div>
 

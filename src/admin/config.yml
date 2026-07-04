@@ -40,6 +40,46 @@ collections:
               - { label: "Instagram", name: "instagram", widget: "string" }
               - { label: "YouTube", name: "youtube", widget: "string" }
 
+          # Hero Section Settings
+          - { label: "Hero Title Part 1", name: "heroTitleFirst", widget: "string" }
+          - { label: "Hero Title Part 2 (Green Highlight)", name: "heroTitleSecond", widget: "string" }
+          - { label: "Hero Highlights (Badges)", name: "heroHighlights", widget: "list", field: { label: "Badge", name: "badge", widget: "string" } }
+
+          # Stats Counters
+          - label: "Statistik Sekolah"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Nilai Statistik (Contoh: 350+)", name: "value", widget: "string" }
+              - { label: "Nama Label (Contoh: Siswa Aktif)", name: "label", widget: "string" }
+              - { label: "Warna Ikon", name: "color", widget: "select", options: ["green", "pink", "yellow"] }
+              - { label: "Pilihan Ikon", name: "icon", widget: "select", options: ["students", "teachers", "accreditation"] }
+
+          # Profile Section Settings
+          - label: "Profil Sekolah di Beranda"
+            name: "profile"
+            widget: "object"
+            fields:
+              - { label: "Sub-Title", name: "subtitle", widget: "string" }
+              - { label: "Judul Utama", name: "heading", widget: "string" }
+              - { label: "Deskripsi Paragraf 1", name: "description1", widget: "text" }
+              - { label: "Deskripsi Paragraf 2", name: "description2", widget: "text" }
+              - label: "Poin Keunggulan (Checklist)"
+                name: "points"
+                widget: "list"
+                fields:
+                  - { label: "Judul Poin", name: "title", widget: "string" }
+                  - { label: "Penjelasan Singkat", name: "description", widget: "text" }
+
+          # FAQ Sidebar Settings
+          - label: "Card Tanya Admin (FAQ)"
+            name: "faqSection"
+            widget: "object"
+            fields:
+              - { label: "Judul Card", name: "title", widget: "string" }
+              - { label: "Deskripsi", name: "description", widget: "text" }
+              - { label: "Gambar Karakter (PNG)", name: "image", widget: "image" }
+
   - name: programs
     label: Educational Programs
     folder: src/program
@@ -77,6 +117,14 @@ collections:
       - { label: "Subject Taught", name: "subject", widget: "string" }
       - { label: "Photo URL / Image", name: "photo", widget: "image" }
       - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
+      - label: "Program Mengajar"
+        name: "program"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "TKQ", value: "tkq" }
+          - { label: "TPQ", value: "tpq" }
+          - { label: "DTA", value: "dta" }
 
   - name: gallery
     label: Gallery Activities
@@ -109,3 +157,37 @@ collections:
       - { label: "Content Text", name: "content", widget: "text" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Active Status", name: "active", widget: "boolean" }
+
+  - name: pages
+    label: Halaman Statis
+    delete: false
+    files:
+      - name: tentang
+        label: Halaman Tentang Kami
+        file: src/tentang.md
+        fields:
+          - { label: "Judul Halaman", name: "title", widget: "string" }
+          - { label: "Deskripsi Meta SEO", name: "description", widget: "string" }
+          - { label: "Foto Banner Utama", name: "image", widget: "image" }
+          - { label: "Isi Halaman (Gunakan Editor)", name: "body", widget: "markdown" }
+      - name: ppdb
+        label: Halaman PPDB Online
+        file: src/ppdb.md
+        fields:
+          - { label: "Judul Halaman", name: "title", widget: "string" }
+          - { label: "Deskripsi Meta SEO", name: "description", widget: "string" }
+          - { label: "Isi Halaman (Gunakan Editor)", name: "body", widget: "markdown" }
+      - name: kontak
+        label: Halaman Kontak Kami
+        file: src/kontak.md
+        fields:
+          - { label: "Judul Halaman", name: "title", widget: "string" }
+          - { label: "Deskripsi Meta SEO", name: "description", widget: "string" }
+          - { label: "Isi Halaman (Gunakan Editor)", name: "body", widget: "markdown" }
+      - name: faq
+        label: Halaman FAQ (Pertanyaan)
+        file: src/faq.md
+        fields:
+          - { label: "Judul Halaman", name: "title", widget: "string" }
+          - { label: "Deskripsi Meta SEO", name: "description", widget: "string" }
+          - { label: "Isi Halaman (Gunakan Editor)", name: "body", widget: "markdown" }

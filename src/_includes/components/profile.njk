@@ -1,0 +1,57 @@
+<section class="py-20 bg-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Text Content (7/12) -->
+      <div class="lg:col-span-7 space-y-6 text-left">
+        <span class="block text-sm font-bold text-primary tracking-widest uppercase mb-2">{{ settings.profile.subtitle }}</span>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-navy leading-tight">
+          {{ settings.profile.heading | safe }}
+        </h2>
+        <p class="text-gray-650 text-sm sm:text-base leading-relaxed">
+          {{ settings.profile.description1 }}
+        </p>
+        <p class="text-gray-650 text-sm sm:text-base leading-relaxed">
+          {{ settings.profile.description2 }}
+        </p>
+        
+        <!-- Quick Values Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+          {% for point in settings.profile.points %}
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 bg-primary/10 text-primary flex items-center justify-center rounded-full shrink-0 mt-0.5">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-navy">{{ point.title }}</h4>
+              <p class="text-xs text-gray-500 mt-0.5">{{ point.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="pt-6">
+          <a href="/tentang/" class="btn-primary">
+            Selengkapnya Tentang Kami
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Layout (5/12) -->
+      <div class="lg:col-span-5 relative flex justify-center">
+        <!-- Abstract illustrated profile card -->
+        <div class="w-full max-w-[360px] aspect-[4/3] bg-primary/5 text-primary rounded-3xl border border-primary/20 flex flex-col items-center justify-center p-8 relative overflow-hidden shadow-sm">
+          <!-- Pattern background -->
+          <div class="absolute inset-0 bg-primary/10 opacity-20 bg-[radial-gradient(#0D683E_1.5px,transparent_1.5px)] [background-size:18px_18px]"></div>
+          
+          <!-- Mosque dome outline -->
+          <svg class="w-20 h-20 text-primary relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+          </svg>
+          
+          <span class="block text-lg font-bold text-navy mt-4 relative z-10 tracking-tight">Sekolah Al-Ishlah</span>
+          <span class="block text-xs font-semibold text-gray-500 uppercase tracking-widest mt-1 relative z-10">TKQ - TPQ - DTA</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

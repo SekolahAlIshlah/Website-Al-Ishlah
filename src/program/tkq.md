@@ -1,8 +1,10 @@
 ---
-layout: layouts/page.njk
+layout: layouts/program.njk
 title: Program TKQ (Taman Kanak-Kanak Al-Qur'an)
 permalink: /program/tkq/
 description: "Mengenal Program TKQ Sekolah Al-Ishlah untuk rentang usia anak 3 hingga 6 tahun."
+image: /assets/images/program-tkq.jpg
+programId: tkq
 ---
 
 ## Pengantar Program TKQ

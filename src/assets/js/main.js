@@ -82,18 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname;
     
     document.querySelectorAll('.nav-link').forEach(link => {
-      const href = link.getAttribute('href');
+      const href = link.getAttribute('href') || link.getAttribute('data-active-prefix');
+      if (!href) return;
       
-      // Active states matching
       const isHomeActive = currentPath === '/' && href === '/';
       const isSubpageActive = href !== '/' && currentPath.startsWith(href);
       
       if (isHomeActive || isSubpageActive) {
-        link.classList.add('text-primary', 'font-bold');
-        link.classList.remove('text-navy-light');
+        link.classList.add('text-white', 'font-semibold');
+        link.classList.remove('text-cream/90');
       } else {
-        link.classList.remove('text-primary', 'font-bold');
-        link.classList.add('text-navy-light');
+        link.classList.remove('text-white', 'font-semibold');
+        link.classList.add('text-cream/90');
       }
     });
   };

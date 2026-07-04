@@ -1,8 +1,10 @@
 ---
-layout: layouts/page.njk
+layout: layouts/program.njk
 title: Program TPQ (Taman Pendidikan Al-Qur'an)
 permalink: /program/tpq/
 description: "Mengenal Program TPQ Sekolah Al-Ishlah untuk rentang usia anak 7 hingga 12 tahun."
+image: /assets/images/program-tpq.jpg
+programId: tpq
 ---
 
 ## Pengantar Program TPQ
