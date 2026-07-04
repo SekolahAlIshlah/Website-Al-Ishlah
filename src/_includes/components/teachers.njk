@@ -44,11 +44,11 @@
          class="relative">
       
       <!-- Slider Track -->
-      <div x-ref="slider" class="flex overflow-x-auto gap-6 scrollbar-hide pb-6 snap-x snap-mandatory" style="-ms-overflow-style: none; scrollbar-width: none;">
+      <div x-ref="slider" class="flex overflow-x-auto gap-6 scrollbar-hide pb-6 snap-x snap-mandatory px-8 sm:px-0" style="-ms-overflow-style: none; scrollbar-width: none;">
         
         {% for teacher in collections.teachers | sortOrder %}
         <!-- Teacher Card -->
-        <div class="snap-start shrink-0 w-72 bg-cream/35 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
+        <div class="snap-center shrink-0 w-72 bg-cream/35 border border-gray-100 rounded-3xl p-6 text-center hover-lift relative overflow-hidden group">
           
           <!-- Alternating Color Themes -->
           {% set bgColors = ['bg-primary/10', 'bg-pink/10', 'bg-yellow/15', 'bg-blue/10'] %}
