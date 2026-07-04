@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Left Column: Text Content (7/12) -->
-      <div class="lg:col-span-7 space-y-6 text-left">
+      <div class="order-2 lg:order-1 lg:col-span-7 space-y-6 text-left">
         <span class="block text-sm font-bold text-primary tracking-widest uppercase mb-2">{{ settings.profile.subtitle }}</span>
         <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-navy leading-tight">
           {{ settings.profile.heading | safe }}
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Right Column: Visual Layout (5/12) -->
-      <div class="lg:col-span-5 relative flex justify-center">
+      <div class="order-1 lg:order-2 lg:col-span-5 relative flex justify-center">
         <!-- Abstract illustrated profile card -->
         <div class="w-full max-w-[360px] aspect-[4/3] bg-primary/5 text-primary rounded-3xl border border-primary/20 flex flex-col items-center justify-center p-8 relative overflow-hidden shadow-sm">
           <!-- Pattern background -->
