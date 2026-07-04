@@ -42,8 +42,8 @@
       "icon": "teachers"
     },
     {
-      "value": "Akreditasi A",
-      "label": "Sertifikasi Resmi",
+      "value": "A",
+      "label": "Terakreditasi A",
       "color": "yellow",
       "icon": "accreditation"
     }
